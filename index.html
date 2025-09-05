@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3csvg width='64' height='64' viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cdefs%3e%3clinearGradient id='grad' x1='0' y1='0' x2='1' y2='1'%3e%3cstop offset='0%25' stop-color='%23A78BFA'/%3e%3cstop offset='100%25' stop-color='%234F46E5'/%3e%3c/linearGradient%3e%3c/defs%3e%3cpath fill-rule='evenodd' clip-rule='evenodd' d='M32 0C14.3269 0 0 14.3269 0 32C0 49.6731 14.3269 64 32 64C49.6731 64 64 49.6731 64 32C64 14.3269 49.6731 0 32 0ZM44.5 16C41.2 16 38.5 18.7 38.5 22C38.5 24.8 40.6 27.2 43.3 27.9L42.5 30.5C39.1 28.5 34.9 28.5 31.5 30.5L30.7 27.9C33.4 27.2 35.5 24.8 35.5 22C35.5 18.7 32.8 16 29.5 16C25.5 16 22.5 19.6 22.5 24.5C22.5 27.6 24 30.3 26.3 32C24 33.7 22.5 36.4 22.5 39.5C22.5 44.4 25.5 48 29.5 48C31.5 48 33.3 47.1 34.5 45.7L35.6 42.1C37.3 43.1 39.3 43.1 41 42L42.4 45.7C43.6 47.1 45.4 48 47.5 48C51.5 48 54.5 44.4 54.5 39.5C54.5 36.4 53 33.7 50.7 32C53 30.3 54.5 27.6 54.5 24.5C54.5 19.6 51.5 16 47.5 16H44.5Z' fill='url(%23grad)'/%3e%3c/svg%3e" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CogniFlow - Personal Productivity Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700;900&family=Orbitron:wght@400;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        --color-primary: #FFFFFF;
+        --color-surface: #F9FAFB;
+        --color-border: #E5E7EB;
+        --color-border-hover: #D1D5DB;
+        --color-text: #1F2937;
+        --color-text-dim: #6B7280;
+        --color-text-bright: #111827;
+        --color-accent: #111827;
+        --color-accent-hover: #374151;
+        --color-accent-subtle: rgba(17, 24, 39, 0.05);
+        --color-success: #10B981;
+        --color-danger: #EF4444;
+        --color-danger-text: #FFFFFF;
+        --color-danger-bg: #EF4444;
+        --color-four-line-main: #3b82f6; /* blue-500 */
+        --color-four-line-secondary: #ef4444; /* red-500 */
+      }
+      html.dark {
+        --color-primary: #0A0A0A;
+        --color-surface: #1A1A1A;
+        --color-border: #262626;
+        --color-border-hover: #404040;
+        --color-text: #E5E5E5;
+        --color-text-dim: #A3A3A3;
+        --color-text-bright: #FAFAFA;
+        --color-accent: #FAFAFA;
+        --color-accent-hover: #D4D4D4;
+        --color-accent-subtle: rgba(250, 250, 250, 0.1);
+        --color-success: #FAFAFA;
+        --color-danger: #F472B6;
+        --color-danger-text: #FAFAFA;
+        --color-danger-bg: #F472B6;
+      }
+      body {
+        background-color: var(--color-primary);
+        background-image: radial-gradient(circle at top, var(--color-surface), var(--color-primary));
+        background-attachment: fixed;
+      }
+      .paper-background {
+        --paper-bg: var(--color-primary);
+        --line-color: var(--color-border);
+        --dot-color: var(--color-border-hover);
+        background-color: var(--paper-bg);
+      }
+      .paper-plain {
+        background-image: none;
+      }
+      .paper-lined {
+        background-size: 100% 1.625rem; /* Matches leading-relaxed for 1rem font */
+        background-image: repeating-linear-gradient(to bottom, transparent 0, transparent calc(1.625rem - 1px), var(--line-color) calc(1.625rem - 1px), var(--line-color) 1.625rem);
+      }
+      .paper-grid {
+        background-size: 1rem 1rem;
+        background-image:
+          repeating-linear-gradient(to right, var(--line-color) 0, var(--line-color) 1px, transparent 1px, transparent 1rem),
+          repeating-linear-gradient(to bottom, var(--line-color) 0, var(--line-color) 1px, transparent 1px, transparent 1rem);
+      }
+      .paper-dotted {
+        background-size: 0.75rem 0.75rem;
+        background-image: radial-gradient(circle, var(--dot-color) 1.5px, transparent 1.5px);
+      }
+      .paper-four-line {
+        background-size: 100% 1.625rem; /* Base on leading-relaxed */
+        background-image: 
+          repeating-linear-gradient(
+            to bottom,
+            var(--color-four-line-secondary) 0, var(--color-four-line-secondary) 1px, /* Top Red */
+            transparent 1px, transparent calc(1.625rem * 0.33), 
+            var(--color-four-line-main) calc(1.625rem * 0.33), var(--color-four-line-main) calc(1.625rem * 0.33 + 1px), /* Middle Blue 1 */
+            transparent calc(1.625rem * 0.33 + 1px), transparent calc(1.625rem * 0.66),
+            var(--color-four-line-main) calc(1.625rem * 0.66), var(--color-four-line-main) calc(1.625rem * 0.66 + 1px), /* Middle Blue 2 */
+            transparent calc(1.625rem * 0.66 + 1px), transparent calc(1.625rem - 1px),
+            var(--color-four-line-secondary) calc(1.625rem - 1px), var(--color-four-line-secondary) 1.625rem /* Bottom Red */
+          );
+      }
+
+      /* Presentation Themes */
+      [class^="theme-"] {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 4rem;
+        color: white;
+        text-align: center;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      [class^="theme-"] .prose-container {
+        width: 100%;
+        max-width: 1100px;
+      }
+      [class^="theme-"] h1, [class^="theme-"] h2, [class^="theme-"] h3 {
+        font-weight: 700;
+        margin-bottom: 2rem;
+      }
+      [class^="theme-"] p, [class^="theme-"] ul, [class^="theme-"] li {
+        font-size: 1.5rem;
+        line-height: 1.6;
+      }
+      [class^="theme-"] ul {
+        list-style-position: inside;
+        text-align: left;
+        display: inline-block;
+        margin-top: 1rem;
+      }
+      [class^="theme-"] hr {
+        margin: 2rem auto;
+        border-color: rgba(255, 255, 255, 0.2);
+      }
+
+      /* Default Dark Theme */
+      .theme-default-dark {
+        background-color: #111827; /* gray-900 */
+        font-family: 'Inter', sans-serif;
+        color: #E5E7EB; /* gray-200 */
+      }
+      .theme-default-dark h1 { font-size: 3.75rem; }
+      .theme-default-dark hr { width: 50%; }
+
+      /* Professional Theme */
+      .theme-professional {
+        background-color: #FFFFFF;
+        font-family: 'Lato', sans-serif;
+        color: #1F2937; /* gray-800 */
+      }
+      .theme-professional h1, .theme-professional h2, .theme-professional h3 {
+        font-weight: 900;
+        color: #1E40AF; /* blue-800 */
+      }
+      .theme-professional h1 { font-size: 4rem; }
+      .theme-professional p, .theme-professional ul { font-size: 1.75rem; }
+      .theme-professional hr { border-color: #D1D5DB; /* gray-300 */ width: 50%; }
+
+      /* Galaxy Theme */
+      .theme-galaxy {
+        background: #000000 url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?q=80&w=2071&auto=format&fit=crop') center/cover;
+        font-family: 'Orbitron', sans-serif;
+        text-shadow: 0 0 8px rgba(0, 255, 255, 0.7);
+      }
+      .theme-galaxy h1, .theme-galaxy h2, .theme-galaxy h3 {
+        color: #67E8F9; /* cyan-300 */
+      }
+      .theme-galaxy h1 { font-size: 4.5rem; }
+      .theme-galaxy p, .theme-galaxy ul { color: #F0F9FF; /* sky-50 */ font-size: 1.75rem; }
+      .theme-galaxy hr { border-color: #38BDF8; /* sky-400 */ width: 60%; }
+
+      /* Playful Theme */
+      .theme-playful {
+        background-color: #FDF2F8; /* pink-50 */
+        font-family: 'Patrick Hand', cursive;
+        color: #581C87; /* purple-900 */
+      }
+      .theme-playful h1, .theme-playful h2, .theme-playful h3 {
+        color: #DB2777; /* pink-600 */
+      }
+      .theme-playful h1 { font-size: 5rem; }
+      .theme-playful p, .theme-playful ul { font-size: 2.25rem; }
+      .theme-playful hr { border-color: #C026D3; border-style: dashed; width: 40%; }
+
+    </style>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              primary: 'var(--color-primary)',
+              surface: 'var(--color-surface)',
+              border: 'var(--color-border)',
+              'border-hover': 'var(--color-border-hover)',
+              text: {
+                DEFAULT: 'var(--color-text)',
+                dim: 'var(--color-text-dim)',
+                bright: 'var(--color-text-bright)',
+              },
+              accent: {
+                DEFAULT: 'var(--color-accent)',
+                hover: 'var(--color-accent-hover)',
+                subtle: 'var(--color-accent-subtle)',
+              },
+              success: 'var(--color-success)',
+              danger: {
+                DEFAULT: 'var(--color-danger)',
+                text: 'var(--color-danger-text)',
+                bg: 'var(--color-danger-bg)',
+              },
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.17.0",
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "react-markdown": "https://aistudiocdn.com/react-markdown@^9.0.1",
+    "remark-gfm": "https://aistudiocdn.com/remark-gfm@^4.0.0",
+    "rehype-raw": "https://aistudiocdn.com/rehype-raw@^7.0.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
